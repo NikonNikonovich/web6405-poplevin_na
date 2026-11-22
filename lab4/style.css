@@ -1,0 +1,469 @@
+:root {
+    /* Фоны */
+    --color-bg: #faf7f4;
+    --color-surface: #ffffff;
+    --color-primary: #1a3a5c;
+    --color-primary-dark: #123150;
+
+    /* Акцент */
+    --color-accent: #e67e22;
+    --color-accent-hover: #cf6d1a;
+
+    /* Текст */
+    --color-text: #123150;
+    --color-text-light: #ecf0f1;
+    --color-text-muted: #7f8c8d;
+
+    /* Подсветка */
+    --color-highlight-bg: #fce4d6;
+    --color-highlight-text: #b85c1a;
+
+    /* Границы */
+    --color-border: #dcdde1;
+    --color-border-light: #d4d4d4;
+
+    /* Таблица */
+    --color-table-even: #f9fbfd;
+    --color-table-hover: #fdf2e9;
+
+    /* Градиент главное страницы */
+    --gradient-hero-start: #123150;
+    --gradient-hero-mid: #4a87b8;
+    --gradient-hero-end: #5ba3d0;
+
+    /* Цвета теней */
+    --shadow-soft: rgba(0, 0, 0, 0.06);
+    --shadow-medium: rgba(0, 0, 0, 0.08);
+    --shadow-strong: rgba(0, 0, 0, 0.15);
+    --shadow-hover: rgba(0, 0, 0, 0.2);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.highlight {
+    background-color: var(--color-highlight-bg);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    color: var(--color-highlight-text);
+}
+
+/* Шапка */
+
+.header {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 4px solid var(--color-accent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header__logo-image {
+    display: block;
+}
+
+.header__logo-title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+/* Навигация */
+
+.nav__link {
+    color: var(--color-text-light);
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+
+.nav__link:hover {
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+}
+
+.nav__link--active {
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+}
+
+/* Футер */
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    margin-top: 40px;
+}
+
+.footer__text {
+    margin-bottom: 5px;
+}
+
+.footer__link {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.footer__link:hover {
+    text-decoration: underline;
+}
+
+/* Основная часть */
+
+.main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.content {
+    background: var(--color-surface);
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.content__title {
+    color: var(--color-primary-dark);
+    border-bottom: 3px solid var(--color-accent);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-size: 1.9rem;
+}
+
+.content__subtitle {
+    color: var(--color-primary-dark);
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.content__text {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Анимация */
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 1. Главная страница (Flexbox) */
+
+.hero {
+    background: linear-gradient(
+        135deg,
+        var(--gradient-hero-start) 0%,
+        var(--gradient-hero-mid) 50%,
+        var(--gradient-hero-end) 100%
+    );
+    background-size: 300% 300%;
+    animation: gradientShift 10s ease-in-out infinite;
+    color: var(--color-surface);
+    padding: 50px 40px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    border-bottom: none;
+    color: var(--color-surface);
+}
+
+.hero__text {
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+    text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero { animation: none; }
+}
+
+/* 1.1 Кнопка */
+
+.btn {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--color-accent-hover);
+    transform: scale(1.05);
+}
+
+/* 1.2 Блоки информации (Flexbox) */
+
+.info-blocks {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1 1 300px;
+    background: var(--color-surface);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px var(--shadow-soft);
+    border-left: 5px solid var(--color-accent);
+}
+
+.card__title {
+    margin-top: 0;
+    color: var(--color-primary);
+}
+
+/* 2. Таблица */
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.coin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.coin-table__caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+    text-align: left;
+}
+
+.coin-table__cell {
+    border: 1px solid var(--color-border);
+    padding: 12px 15px;
+}
+
+.coin-table__head {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+}
+
+.coin-table__cell--left  { text-align: left; }
+.coin-table__cell--center{ text-align: center; }
+.coin-table__cell--right { text-align: right; }
+
+.coin-table__row:nth-child(even) {
+    background-color: var(--color-table-even);
+}
+
+.coin-table__row:hover {
+    background-color: var(--color-table-hover);
+}
+
+.thumb {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.thumb:hover {
+    transform: scale(1.6);
+    box-shadow: 0 4px 10px var(--shadow-hover);
+}
+
+/* 3. Страница монеты */
+
+.full-coin {
+    display: none;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.full-coin:target {
+    display: block;
+}
+
+.full-coin__image {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid var(--color-primary);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px var(--shadow-strong);
+}
+
+.full-coin__title {
+    margin-top: 20px;
+    color: var(--color-primary);
+    border-bottom: 3px solid var(--color-border-light);
+    font-size: 1.5rem;
+}
+
+.full-coin__text {
+    max-width: 600px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.default {
+    display: block;
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--color-table-even);
+    border: 2px dashed var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+}
+
+.full-coin:target ~ .default {
+    display: none;
+}
+
+/* (Grid) */
+
+.release-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.release-card {
+    background: var(--color-surface);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px var(--shadow-soft);
+    border-top: 5px solid var(--color-accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.release-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px var(--shadow-strong);
+}
+
+.release-card__title {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+/* Форма (БЭМ) */
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.contact-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-form__field--checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-form__label {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.contact-form__label--checkbox {
+    font-weight: 400;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.contact-form__input {
+    padding: 12px 15px;
+    border: 2px solid var(--color-border);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-text);
+    background: var(--color-surface);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form__input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-highlight-bg);
+}
+
+.contact-form__textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form__checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+}
+
+.contact-form__button {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
